@@ -55,6 +55,8 @@ public class ConnectFourGame {
 	}
 
 	public boolean checkWin(char player) {
+		// Check for a win in horizontal, vertical, and diagonal directions
+		
 		// Check for horizontal wins
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j <= COLUMNS - 4; j++) {
