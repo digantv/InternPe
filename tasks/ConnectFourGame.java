@@ -13,6 +13,7 @@ public class ConnectFourGame {
 	private char[][] board;
 
 	public ConnectFourGame() {
+		// Initialize the game board with empty spaces
 		board = new char[ROWS][COLUMNS];
 		for (char[] row : board) {
 			Arrays.fill(row, EMPTY);
@@ -20,6 +21,7 @@ public class ConnectFourGame {
 	}
 
 	public void printBoard() {
+		// Print the current state of the game board
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j < COLUMNS; j++) {
 				System.out.print("| " + board[i][j] + " ");
@@ -31,24 +33,30 @@ public class ConnectFourGame {
 	}
 
 	public boolean isColumnFull(int col) {
+		 // Check if the specified column is full
 		return board[0][col] != EMPTY;
 	}
 
 	public boolean makeMove(int col, char player) {
+		 // Make a move for the specified player in the given column
 		if (col < 0 || col >= COLUMNS || isColumnFull(col)) {
+		// Invalid move if the column is out of bounds or full
 			return false;
 		}
 
 		for (int i = ROWS - 1; i >= 0; i--) {
 			if (board[i][col] == EMPTY) {
+		 // Place the player's token in the first available empty slot in the column
 				board[i][col] = player;
 				return true;
 			}
 		}
-		return false;
+		return false;// Couldn't make a move (column full)
 	}
 
 	public boolean checkWin(char player) {
+		// Check for a win in horizontal, vertical, and diagonal directions
+		
 		// Check for horizontal wins
 		for (int i = 0; i < ROWS; i++) {
 			for (int j = 0; j <= COLUMNS - 4; j++) {
@@ -93,6 +101,7 @@ public class ConnectFourGame {
 	}
 
 	public static void celebrateWinner(char winner) {
+		// Print a congratulatory message with an ASCII art representation of celebration
 		String winningMessage = " wins!";
 		String winnerName = (winner == PLAYER1) ? "Player 1" : "Player 2";
 
